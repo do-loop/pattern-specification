@@ -5,3 +5,5 @@ dotnet: 2.1.403
 script:
  - cd src/SpecificationPattern
  - dotnet restore
+ - dotnet build
+ - dotnet test SpecificationPattern.Tests/SpecificationPattern.Tests.csproj
