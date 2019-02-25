@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
-using SpecificationPattern.Data;
 using SpecificationPattern.Extensions;
+using SpecificationPattern.Implementations.Repositories;
 using SpecificationPattern.Implementations.Specifications;
 
 namespace SpecificationPattern.ConsoleApp.Source
@@ -29,88 +29,88 @@ namespace SpecificationPattern.ConsoleApp.Source
 
         private static void Example_01()
         {
-            DataStorage.Users
-                .Where(Administrators.New())
+            new UserRepository()
+                .Find(Administrators.New())
                 .ToList()
                 .ForEach(Console.WriteLine);
 
             Console.WriteLine();
 
-            DataStorage.Users
-                .Where(new Administrators())
+            new UserRepository()
+                .Find(new Administrators())
                 .ToList()
                 .ForEach(Console.WriteLine);
 
             Console.WriteLine();
 
-            DataStorage.Users
-                .Where(Administrators.New().Not())
+            new UserRepository()
+                .Find(Administrators.New().Not())
                 .ToList()
                 .ForEach(Console.WriteLine);
 
             Console.WriteLine();
 
-            DataStorage.Users
-                .Where(!Administrators.New())
+            new UserRepository()
+                .Find(!Administrators.New())
                 .ToList()
                 .ForEach(Console.WriteLine);
         }
 
         private static void Example_02()
         {
-            DataStorage.Users
-                .Where(WithName.New("Виктор"))
+            new UserRepository()
+                .Find(WithName.New("Виктор"))
                 .ToList()
                 .ForEach(Console.WriteLine);
 
             Console.WriteLine();
 
-            DataStorage.Users
-                .Where(WithName.New("Виктор").Not())
+            new UserRepository()
+                .Find(WithName.New("Виктор").Not())
                 .ToList()
                 .ForEach(Console.WriteLine);
 
             Console.WriteLine();
 
-            DataStorage.Users
-                .Where(new WithName("Виктор"))
+            new UserRepository()
+                .Find(new WithName("Виктор"))
                 .ToList()
                 .ForEach(Console.WriteLine);
 
             Console.WriteLine();
 
-            DataStorage.Users
-                .Where(!WithName.New("Виктор"))
+            new UserRepository()
+                .Find(!WithName.New("Виктор"))
                 .ToList()
                 .ForEach(Console.WriteLine);
         }
 
         private static void Example_03()
         {
-            DataStorage.Users
-                .Where(WithName.New("Виктор") & Administrators.New())
+            new UserRepository()
+                .Find(WithName.New("Виктор") & Administrators.New())
                 .ToList()
                 .ForEach(Console.WriteLine);
 
             Console.WriteLine();
 
-            DataStorage.Users
-                .Where(WithName.New("Виктор").And(new Administrators()))
+            new UserRepository()
+                .Find(WithName.New("Виктор").And(new Administrators()))
                 .ToList()
                 .ForEach(Console.WriteLine);
         }
 
         private static void Example_04()
         {
-            DataStorage.Users
-                .Where(WithName.New("Денис") | Administrators.New())
+            new UserRepository()
+                .Find(WithName.New("Денис") | Administrators.New())
                 .ToList()
                 .ForEach(Console.WriteLine);
 
             Console.WriteLine();
 
-            DataStorage.Users
-                .Where(WithName.New("Денис").Or(new Administrators()))
+            new UserRepository()
+                .Find(WithName.New("Денис").Or(new Administrators()))
                 .ToList()
                 .ForEach(Console.WriteLine);
         }
