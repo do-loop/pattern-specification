@@ -1,0 +1,7 @@
+language: csharp
+solution: src/SpecificationPattern/SpecificationPattern.sln
+mono: none
+dotnet: 2.1.403
+script:
+ - cd src/SpecificationPattern
+ - dotnet restore
