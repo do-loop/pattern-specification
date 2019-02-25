@@ -52,8 +52,8 @@ namespace SpecificationPattern.Implementations
                     : _one;
             }
 
-            public static Expression<Func<TEntity, bool>> GetExpression(
-                Expression<Func<TEntity, bool>> one, Expression<Func<TEntity, bool>> two)
+            public static Expression<Func<TEntity, bool>> GetExpression
+                (Expression<Func<TEntity, bool>> one, Expression<Func<TEntity, bool>> two)
             {
                 return Create(one.Parameters.Single(), two.Parameters.Single())
                     .Visit(two) as Expression<Func<TEntity, bool>>;
